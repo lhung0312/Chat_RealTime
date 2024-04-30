@@ -1,0 +1,35 @@
+# Ignore log files
+
+\*.log
+
+# Ignore .DS_Store files (created by macOS)
+
+.DS_Store
+
+# Ignore node_modules directory (created by Node.js)
+
+/node_modules
+
+# Ignore environment-specific .env files
+
+\*.env
+
+# Ignore build output directories
+
+/dist
+/build
+
+# Ignore temporary directories
+
+/tmp
+/cache
+
+# Ignore IDE and editor configuration files (specifically for VSCode and IntelliJ IDEA)
+
+.vscode
+.idea
+\*.iml
+
+# Ignore project configuration files
+
+.project
