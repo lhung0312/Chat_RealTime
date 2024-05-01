@@ -20,6 +20,11 @@ app.use("/", express.static(path.join(__dirname, "../public")));
 
 io.on("connection", (socket) => {
   console.log("a user connected");
+
+  socket.on("chat message", (msg) => {
+    io.emit("send msg from server to all client", msg);
+  });
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });

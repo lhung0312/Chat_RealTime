@@ -24,7 +24,7 @@
 /tmp
 /cache
 
-# Ignore IDE and editor configuration files (specifically for VSCode and IntelliJ IDEA)
+# Ignore IDE and editor confizguration files (specifically for VSCode and IntelliJ IDEA)
 
 .vscode
 .idea
