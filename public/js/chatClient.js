@@ -2,6 +2,7 @@ const socket = io();
 const messages = document.getElementById("messages");
 const form = document.getElementById("form");
 const input = document.getElementById("input");
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (input.value) {
@@ -21,7 +22,15 @@ document.getElementById("location").addEventListener("click", () => {
     });
   });
 });
-
+//xử lý queryString
+const queryString = location.search;
+const params = Qs.parse(queryString, {
+  ignoreQueryPrefix: true,
+});
+console.log(params);
+const { room, username } = params;
+// send queryString
+socket.emit("send queryString", { room, username });
 //dù server io nhưng client vẫn socket
 socket.on("send msg from server to all client", (msg) => {
   console.log(msg);
