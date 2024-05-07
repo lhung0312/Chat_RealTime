@@ -35,3 +35,7 @@ socket.emit("send queryString", { room, username });
 socket.on("send msg from server to all client", (msg) => {
   console.log(msg);
 });
+//userList
+socket.on("send userList", (userList) => {
+  console.log("list user: ", userList);
+});

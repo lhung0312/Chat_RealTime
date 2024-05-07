@@ -1,4 +1,4 @@
-const createUser = require("../services/user.service");
+const { createUser, deleteUserService } = require("../services/user.service");
 
 const postCreateUser = async (req, res) => {
   let result = await createUser(req.body);
@@ -7,4 +7,11 @@ const postCreateUser = async (req, res) => {
     data: result,
   });
 };
-module.exports = postCreateUser;
+const deleteUser = async (req, res) => {
+  let result = await deleteUserService(req.query.id);
+  return res.status(200).json({
+    errorCode: 0,
+    data: result,
+  });
+};
+module.exports = { postCreateUser, deleteUser };
