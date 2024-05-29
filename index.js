@@ -27,7 +27,10 @@ app.get("/roomChat", (req, res) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(require("./src/routes/user.route"));
+app.use(require("./src/routes/room.route"));
+app.use(require("./src/routes/message.route"));
 
 // can chu y toi khai niem global duoc gioi thieu trong video
 global.__basedir = __dirname;

@@ -2,6 +2,7 @@ const socket = io();
 const messages = document.getElementById("messages");
 const form = document.getElementById("form");
 const input = document.getElementById("input");
+// const displayMessages = require("../../src//ultils/displayMessages");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -19,6 +20,7 @@ document.getElementById("location").addEventListener("click", () => {
     socket.emit("share location", { latitude, longitude });
     socket.on("share location", (urlLocation) => {
       console.log("location: ", urlLocation);
+      // displayMessages(urlLocation);
     });
   });
 });
@@ -33,7 +35,11 @@ const { room, username } = params;
 socket.emit("send queryString", { room, username });
 //dù server io nhưng client vẫn socket
 socket.on("send msg from server to all client", (msg) => {
-  console.log(msg);
+  //displayMessages
+  var item = document.createElement("li");
+  item.textContent = JSON.stringify(msg);
+  messages.appendChild(item);
+  window.scrollTo(0, document.body.scrollHeight);
 });
 //userList
 socket.on("send userList", (userList) => {
