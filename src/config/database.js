@@ -1,9 +1,6 @@
 require("dotenv").config();
-
 const mongoose = require("mongoose");
-
 // check connection
-
 const dbState = [
   {
     value: 0,
@@ -22,7 +19,6 @@ const dbState = [
     label: "Disconnecting",
   },
 ];
-
 const connection = async () => {
   const options = {
     user: process.env.DB_USER,

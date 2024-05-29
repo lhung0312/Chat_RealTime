@@ -1,14 +1,16 @@
 const Message = require("../models/message");
 
+const getAllRoomService = async () => {
+  return await Message.find();
+};
+
 const createMessageService = async (data) => {
   let results = await Message.create(data);
   return results;
 };
 
-const getMessageService = async (data) => {
-  console.log(data);
-  let results = await Message.findById(data);
-  return results;
+const getMessageService = async () => {
+  return await Message.find();
 };
 
 const deleteMessageService = async (data) => {
@@ -25,6 +27,7 @@ const updateMessageService = async (data) => {
 };
 
 module.exports = {
+  getAllRoomService,
   createMessageService,
   getMessageService,
   deleteMessageService,

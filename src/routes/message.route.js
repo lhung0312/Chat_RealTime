@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  getMessageById,
+  getMessagePaginate,
   postCreateMessage,
   deleteMessageById,
   putUpdateMessage,
@@ -8,7 +8,7 @@ const {
 
 const route = express.Router();
 
-route.get("/message/:id", getMessageById);
+route.get("/message", getMessagePaginate);
 route.post("/message", postCreateMessage);
 route.delete("/message/:id", deleteMessageById);
 route.put("/message", putUpdateMessage);

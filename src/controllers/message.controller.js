@@ -1,4 +1,3 @@
-const Message = require("../models/message");
 const {
   createMessageService,
   getMessageService,
@@ -6,24 +5,21 @@ const {
   updateMessageService,
 } = require("../services/message.service");
 
-const getMessageById = async (req, res) => {
-  let data = req.params.id;
-  let results = await getMessageService(data);
+const getMessagePaginate = async (req, res) => {
+  let results = await getMessageService();
   return res.status(200).json({
     errorCode: 0,
     data: results,
   });
 };
-
 const postCreateMessage = async (req, res) => {
   let data = req.body;
   let results = await createMessageService(data);
-  return res.status(200).json({
+  return res.status(201).json({
     errorCode: 0,
     data: results,
   });
 };
-
 const deleteMessageById = async (req, res) => {
   let data = req.params.id;
   let results = await deleteMessageService(data);
@@ -32,7 +28,6 @@ const deleteMessageById = async (req, res) => {
     data: results,
   });
 };
-
 const putUpdateMessage = async (req, res) => {
   let data = req.body;
   let results = await updateMessageService(data);
@@ -41,9 +36,8 @@ const putUpdateMessage = async (req, res) => {
     data: results,
   });
 };
-
 module.exports = {
-  getMessageById,
+  getMessagePaginate,
   postCreateMessage,
   deleteMessageById,
   putUpdateMessage,

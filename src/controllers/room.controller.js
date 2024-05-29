@@ -1,14 +1,22 @@
 const Room = require("../models/room");
 const {
+  getAllRoomService,
   createRoomService,
-  getRoomService,
+  getRoomByIdService,
   deleteRoomService,
   updateRoomService,
 } = require("../services/room.service");
 
+const getAllRoom = async () => {
+  let results = await getAllRoomService();
+  return res.status(200).json({
+    errorCode: 0,
+    data: results,
+  });
+};
 const getRoomById = async (req, res) => {
   let data = req.params.id;
-  let results = await getRoomService(data);
+  let results = await getRoomByIdService(data);
   return res.status(200).json({
     errorCode: 0,
     data: results,
@@ -40,4 +48,10 @@ const putUpdateRoom = async (req, res) => {
   });
 };
 
-module.exports = { getRoomById, postCreateRoom, deleteRoomById, putUpdateRoom };
+module.exports = {
+  getAllRoom,
+  getRoomById,
+  postCreateRoom,
+  deleteRoomById,
+  putUpdateRoom,
+};
