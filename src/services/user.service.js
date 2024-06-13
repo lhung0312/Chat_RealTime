@@ -7,7 +7,7 @@ const getUserByIdService = async (_id) => {
   return await User.find({ _id });
 };
 const createUserService = async (data) => {
-  let result = await User.create(data);
+  let result = await User.create({ ...data });
   return result;
 };
 const updateUserService = async (_id, data) => {
